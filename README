@@ -1,7 +1,14 @@
 a sample rails app in front of the OCSinventory Database (http://www.ocsinventory-ng.org/)
 
-This small application is just a concept and display few information of hosts register in ocs mysq database
+This small application is just a concept and display few information 
+of hosts register in ocs mysql database
 
-try http://localhost:9000/dashboard
-try http://localhost:9000/hardware
+
+# $ git clone http://github.com/pli01/ocsinventory-rails.git
+# $ cd ocsinventory-rails
+# Review config/database.yml and modify as needed
+# $ rake db:migrate
+# $ rake db:seed
+# $ ruby script/server
+# Point your browser to http://localhost:3000/dashboard
 
