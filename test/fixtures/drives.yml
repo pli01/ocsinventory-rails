@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  TOTAL: 1
+  FREE: 1
+  FILESYSTEM: MyString
+  TYPE: 
+  HARDWARE_ID: 1
+
+two:
+  TOTAL: 1
+  FREE: 1
+  FILESYSTEM: MyString
+  TYPE: 
+  HARDWARE_ID: 1

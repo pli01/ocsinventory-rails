@@ -1,0 +1,5 @@
+/openpkg/bin/openpkg build imagemagick |sh
+/openpkg/bin/gem install -r rmagick
+/openpkg/bin/gem install -r gruff
+
+( cd vendor/plugins && /openpkg/bin/gem unpack gruff)

@@ -1,0 +1,16 @@
+<h1>Editing virtualmachines</h1>
+
+<% form_for(@virtualmachines) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :NAME %><br />
+    <%= f.text_field :NAME %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @virtualmachines %> |
+<%= link_to 'Back', virtualmachines_path %>

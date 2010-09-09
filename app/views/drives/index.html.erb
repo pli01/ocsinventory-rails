@@ -1,0 +1,28 @@
+<h1>Listing drives</h1>
+
+<table>
+  <tr>
+    <th>Total</th>
+    <th>Free</th>
+    <th>Filesystem</th>
+    <th>Type</th>
+    <th>Hardware id</th>
+  </tr>
+
+<% @drives.each do |drives| %>
+  <tr>
+    <td><%=h drives.TOTAL %></td>
+    <td><%=h drives.FREE %></td>
+    <td><%=h drives.FILESYSTEM %></td>
+    <td><%=h drives.TYPE %></td>
+    <td><%=h drives.HARDWARE_ID %></td>
+    <td><%= link_to 'Show', drives %></td>
+    <td><%= link_to 'Edit', edit_drives_path(drives) %></td>
+    <td><%= link_to 'Destroy', drives, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New drives', new_drives_path %>

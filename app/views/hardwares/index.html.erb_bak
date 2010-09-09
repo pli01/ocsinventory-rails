@@ -1,0 +1,25 @@
+<h1>Listing hardwares</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Domain</th>
+    <th>Memory</th>
+  </tr>
+<%= debug @hardwares%>
+<% @hardwares.each do |hardware| %>
+  <tr>
+    <td><%=h hardware.NAME %></td>
+    <td><%=h hardware.WORKGROUP %></td>
+    <td><%=h hardware.MEMORY %></td>
+    <td><%=h hardware.NAME %></td>
+    <td><%= link_to 'Show', hardware.id %></td>
+    <td><%= link_to 'Edit', :action=>"edit",:id=>"hardware.id" %></td>
+    <td><%= link_to 'Destroy', hardware.id, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New hardware', new_hardware_path %>

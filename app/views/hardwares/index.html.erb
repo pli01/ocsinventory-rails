@@ -1,0 +1,90 @@
+<h1>Listing hardwares</h1>
+
+<% form_tag request.path, :method => 'get' do %>
+<% content_tag :label do %>
+Select domainname: <%= select(:query, :domain, @domain_list, {:prompt => "Choose one"})%>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+<% end %>
+
+<%= page_entries_info @hardwares %>
+<%= will_paginate @hardwares %>
+<table border=1>
+  <tr>
+    <th rowspan="2">Name</th>
+    <th rowspan="2">VM</th>
+    <th rowspan="2">Type</th>
+    <th rowspan="2">VM ID</th>
+    <th colspan="2">CPU</th>
+    <th colspan="3">MEM</th>
+    <th colspan="3">DISK</th>
+    <th rowspan="2">actions</th>
+  </tr>
+  <tr>
+    <!-- CPU -->
+    <th>nb</th>
+    <th>Vitesse (Mhz)</th>
+    <!-- DISK -->
+    <th>physique</th>
+    <th>totale</th>
+    <th>libre</th>
+    <!-- DISK -->
+    <th>nb</th>
+    <th>total</th>
+
+    <!--     <th>nb partition</th> -->
+    <!--     <th>partitions utilisés</th> -->
+    <!--     <th>partitions libre</th> -->
+  </tr>
+  <% @hardwares.each do |hardware| %>
+  <tr class="<%= cycle('odd','even', :ID => hardware) -%>">
+    <td align="center" colspan="1"><%= link_to(hardware.NAME+"."+hardware.WORKGROUP, "http://localhost:8081/ocsreports/machine.php?systemid="+hardware.ID.to_s) %></td>
+    <td align="center"><%= hardware.vm_count  %></td>
+    <td></td>
+    <td></td>
+    <td align="center"><%=h hardware.PROCESSORN %></td>
+    <td align="center"><%=h hardware.PROCESSORS %></td>
+    <td align="center"><%=h hardware.mem_size %></td>
+    <td align="center"><%=h hardware.MEMORY %></td>
+    <!-- fonction definit dans helper -->
+
+    <td align="center">
+      <div style="text-align: left; width:200px; height:20px; background-color:green;">
+	<div style="width:<%= (100-get_percentage(hardware.mem_available, hardware.mem_size))%>%; height:20px; background-color:#c43e3e; border-right:1px white solid;"></div>
+	<div style="text-align:right; margin-top:-20px; color:white; padding-right:4px;"><%= hardware.mem_available%></div>
+      </div>
+    </td>
+
+    <td align="center"><%=h hardware.storages.count %></td>
+    <td align="center"><%=h hardware.storages.sum("DISKSIZE") %></td>
+
+    <!--     <td><%=h hardware.drife.count %></td> -->
+    <!--     <td><%=h hardware.drife.sum("TOTAL") %></td> -->
+    <!--     <td><%=h hardware.drife.sum("FREE") %></td> -->
+  </tr>
+
+  <% hardware.virtualmachine.each do |vm| %>
+  <tr class="<%= cycle('odd','even', :ID => vm) -%>">
+
+    <td></td>
+    <td align=right><%=h vm.NAME %></td>
+    <td><%=h vm.VMTYPE %></td>
+    <td><%=h vm.VMID %></td>
+    <td><%=h vm.VCPU %></td>
+    <td></td>
+    <td><%=h vm.MEMORY %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!--     <td></td> -->
+    <!--     <td></td> -->
+    <!--     <td></td> -->
+  </tr>
+  <% end %>
+
+  <% end %>
+</table>
+
+<%= page_entries_info @hardwares %>
+<%= will_paginate @hardwares %>

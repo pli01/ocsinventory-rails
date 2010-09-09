@@ -1,0 +1,56 @@
+<h1>Listing virtualmachines</h1>
+
+<pre>
+Total:
+  Hosts:     <%= Hardware.count %>
+  VM:        <%= Virtualmachine.count %>
+  MEM Hosts: <%= Memory.sum("CAPACITY") %>
+  MEM VM:    <%= Virtualmachine.sum("MEMORY") %>
+  CPU Hosts: <%= Hardware.sum("PROCESSORN") %>
+  CPU VM:    <%= Virtualmachine.sum("VCPU") %>
+  Storage Host: <%= Storage.sum("DISKSIZE") %>
+</pre>
+
+<!-- <div id="process-list" style="background-color:#eee;"> -->
+<!-- </div> -->
+<!-- <%= periodically_call_remote(:update => 'process-list',:url => { :action => :ps },:frequency => 2)%> -->
+
+<table>
+  <tr>
+    <% for column in Virtualmachine.content_columns %>
+    <th>
+      <%unless column.name == "HARDWARE_ID" -%>
+       <%= column.human_name %>
+      <%else-%>
+       Hosted on
+      <%end -%>
+    </th>
+    <% end %>
+    <th colspan=3>action</th>
+  </tr>
+
+  <% @virtualmachines.each do |virtualmachines| %>
+  <tr>
+    <% for column in Virtualmachine.content_columns %>
+    <td>
+      <%unless column.name == "HARDWARE_ID" -%>
+       <%= virtualmachines.send(column.name) %>
+      <%else-%>
+       <%= VMPool.all %>
+       <%= Hardware.find(virtualmachines.HARDWARE_ID, :select   => "NAME").NAME+"."+Hardware.find(virtualmachines.HARDWARE_ID, :select  => "WORKGROUP").WORKGROUP %>
+      <%end -%>
+    </td>
+    <% end %>
+    <td><%=link_to_remote 'Start my task',:confirm => 'Are you sure?', :url => { :action => 'ps'} %></td>
+
+
+    <td><%= link_to 'Show', virtualmachines %></td>
+    <td><%= link_to 'Edit', :id => virtualmachines %></td>
+    <td><%= link_to 'Destroy', virtualmachines, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New virtualmachines' %>

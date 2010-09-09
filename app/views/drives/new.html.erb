@@ -1,0 +1,31 @@
+<h1>New drives</h1>
+
+<% form_for(@drives) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :TOTAL %><br />
+    <%= f.text_field :TOTAL %>
+  </p>
+  <p>
+    <%= f.label :FREE %><br />
+    <%= f.text_field :FREE %>
+  </p>
+  <p>
+    <%= f.label :FILESYSTEM %><br />
+    <%= f.text_field :FILESYSTEM %>
+  </p>
+  <p>
+    <%= f.label :TYPE %><br />
+    <%= f.text_field :TYPE %>
+  </p>
+  <p>
+    <%= f.label :HARDWARE_ID %><br />
+    <%= f.text_field :HARDWARE_ID %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', drives_path %>

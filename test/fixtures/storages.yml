@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  DISKSIZE: 1
+  TYPE: MyString
+  HARDWARE_ID: 1
+
+two:
+  DISKSIZE: 1
+  TYPE: MyString
+  HARDWARE_ID: 1

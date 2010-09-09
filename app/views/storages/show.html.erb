@@ -1,0 +1,18 @@
+<p>
+  <b>Disksize:</b>
+  <%=h @storages.DISKSIZE %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @storages.TYPE %>
+</p>
+
+<p>
+  <b>Hardware id:</b>
+  <%=h @storages.HARDWARE_ID %>
+</p>
+
+
+<%= link_to 'Edit', edit_storages_path(@storages) %> |
+<%= link_to 'Back', storages_path %>

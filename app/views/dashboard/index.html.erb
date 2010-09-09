@@ -1,0 +1,58 @@
+<center>
+  <h2>Overview</h2>
+  <table border=1>
+  <tr>
+    <th rowspan="2">Domain</th>
+    <th rowspan="2">Host</th>
+    <th rowspan="2">VM</th>
+    <th colspan="3">CPU</th>
+    <th colspan="3">MEM</th>
+    <th colspan="2">DISK</th>
+  </tr>
+  <tr>
+<!-- CPU -->
+    <th>Host</th>
+    <th>VM</th>
+    <th>Vitesse (Mhz)</th>
+<!-- DISK -->
+    <th>physique</th>
+    <th>totale</th>
+    <th>vm</th>
+<!-- DISK -->
+    <th>nb disques</th>
+    <th>capacite</th>
+  </tr>
+  <% @keys.collect do |k,v| %>
+  <tr class="<%= cycle("even", "odd") -%>">
+    <td><%=h v %></td>
+    <td><%= @host_per_domain[v].nil? ? 0 : @host_per_domain[v] %></td>
+    <td><%= @vm_per_domain[v].nil? ? 0 : @vm_per_domain[v] %></td>
+    <td><%= @cpu_per_domain[v].nil? ? 0 : @cpu_per_domain[v] %></td>
+    <td><%= @vcpu_per_domain[v].nil? ? 0 : @vcpu_per_domain[v] %></td>
+    <td><%= @processors_per_domain[v].nil? ? 0 : @processors_per_domain[v] %></td>
+    <td><%= @mem_capacity_per_domain[v].nil? ? 0 : @mem_capacity_per_domain[v] %></td>
+    <td><%= @memory_per_domain[v].nil? ? 0 : @memory_per_domain[v] %></td>
+    <td><%= @vmemory_per_domain[v].nil? ? 0 : @vmemory_per_domain[v] %></td>
+    <td><%= @disk_count_per_domain[v].nil? ? 0 : @disk_count_per_domain[v] %></td>
+    <td><%= @disk_per_domain[v].nil? ? 0 : @disk_per_domain[v] %></td>
+   </tr>
+<% end %>
+ <tr>
+	 <th>Total</th>
+	 <th><%= @keys.collect {|k,v|  @host_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @vm_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @cpu_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @vcpu_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @processors_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @mem_capacity_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @memory_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @vmemory_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @disk_count_per_domain[v].to_i  }.sum %></th>
+	 <th><%= @keys.collect {|k,v|  @disk_per_domain[v].to_i  }.sum %></th>
+ </tr>
+</table>
+  <%= image_tag( url_for(:action => :pie_graph_report)) -%>
+  <%= image_tag( url_for(:action => :line_graph_report)) -%>
+  <%= image_tag( url_for(:action => :generate_with_y_axis_increment)) -%>
+
+</center>

@@ -1,0 +1,28 @@
+<p>
+  <b>Total:</b>
+  <%=h @drives.TOTAL %>
+</p>
+
+<p>
+  <b>Free:</b>
+  <%=h @drives.FREE %>
+</p>
+
+<p>
+  <b>Filesystem:</b>
+  <%=h @drives.FILESYSTEM %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @drives.TYPE %>
+</p>
+
+<p>
+  <b>Hardware id:</b>
+  <%=h @drives.HARDWARE_ID %>
+</p>
+
+
+<%= link_to 'Edit', edit_drives_path(@drives) %> |
+<%= link_to 'Back', drives_path %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Hardwares: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %> 
+  <script type="text/javascript" src="/javascripts/gauge.js"></script> 
+  <script type="text/javascript" src="/javascripts/percentage.js"></script> 
+</head>
+<body>
+ <div id="banner">
+	 <img src="/images/logo.png"/>
+	 <%= @page_title || "Inventory" %><!-- <label id="inventory"/> -->
+ </div>
+ <div id="columns">
+	 <div id="side">
+		 <a href="/dashboard">Dashboard</a><br />
+		 <a href="/hardwares">Hosts</a><br />
+ 	</div>
+	 <div id="main">
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield %>
+ 	</div>
+ </div>
+</body>
+</html>

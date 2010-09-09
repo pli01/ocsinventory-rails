@@ -1,0 +1,20 @@
+<h1>Editing hardware</h1>
+
+<% form_for(@hardware) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :IPADDR %><br />
+    <%= f.text_field :IPADDR %>
+  </p>
+  <p>
+    <%= f.label :NAME %><br />
+    <%= f.text_field :NAME %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @hardware %> |
+<%= link_to 'Back', hardwares_path %>

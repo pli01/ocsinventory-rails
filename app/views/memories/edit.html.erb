@@ -1,0 +1,12 @@
+<h1>Editing memories</h1>
+
+<% form_for(@memories) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @memories %> |
+<%= link_to 'Back', memories_path %>
