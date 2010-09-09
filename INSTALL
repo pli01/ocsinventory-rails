@@ -36,3 +36,10 @@ import schema
 #ruby script/generate model hardwares
 #ruby script/generate model storages
 #ruby script/generate model bios
+
+# generate mongrel config file
+mongrel_rails cluster::configure -e $mode -p $port -a $host -N $nombre  -c $path -C $fconfig
+
+# start mongrel
+mongrel_rails cluster::start -C ./config/mongrel_srv_development.yml
+
